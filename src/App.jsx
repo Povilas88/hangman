@@ -1,8 +1,10 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import hangman from './components/img/hangman.png';
+import { WordGenerator } from './components/wordGenerator/WordGenerator';
 
 function App() {
+  const randomWord = WordGenerator();
   
   return (
     <>
@@ -17,9 +19,13 @@ function App() {
           <p>Loses: </p>
           <span>0</span>
         </div>
+        <div className="lives">
+          <p>Lives: </p>
+          <span>6</span>
+        </div>
       </div>
       <img src={hangman} alt="" />
-      <p>Result</p>
+      <p>{randomWord}</p>
       <div className='keyboardContainer'></div>
     </div>
     </>

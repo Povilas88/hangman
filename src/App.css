@@ -20,6 +20,7 @@ body {
     justify-content: center;
     flex-direction: column;
     gap: 10px;
+    background-color: pink;
 }
 
 img {
@@ -32,6 +33,8 @@ img {
     width: 100%;
     align-items: center;
     justify-content: center;
+    background-color: antiquewhite;
+    padding: 10px;
 }
 
 .win {
@@ -40,6 +43,11 @@ img {
 }
 
 .lose {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.lives {
     display: flex;
     gap: 0.8rem;
 }

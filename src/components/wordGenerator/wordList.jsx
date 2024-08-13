@@ -1,0 +1,18 @@
+export const wordList = [
+    "apple", "banana", "orange", "grape", "peach", "plum",
+    "berry", "melon", "lemon", "cherry", "kiwi", "mango",
+    "papaya", "coconut", "date", "fig", "lime", "pear",
+    "watermelon", "apricot", "appliance", "bread", "cake",
+    "cookie", "dark", "light", "color", "friend", "happy",
+    "sad", "angry", "funny", "smart", "brave", "kind",
+    "woman", "man", "child", "adult", "family", "people",
+    "home", "house", "school", "work", "party", "travel",
+    "music", "dance", "movie", "book", "story", "game",
+    "play", "art", "craft", "photo", "paint", "draw",
+    "build", "create", "learn", "teach", "write", "read",
+    "speak", "listen", "think", "study", "question", "answer",
+    "help", "share", "care", "love", "hate", "like",
+    "want", "need", "give", "take", "find", "lose",
+    "win", "play", "call", "send", "stop", "start",
+    "move", "run", "walk", "jump", "sit", "stand",
+];
