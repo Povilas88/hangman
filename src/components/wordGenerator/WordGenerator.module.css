@@ -1,0 +1,7 @@
+.wordDiv {
+    display: flex;
+    gap: 1rem;
+    font-family: monospace;
+    font-size: 4rem;
+    text-decoration: underline;
+}

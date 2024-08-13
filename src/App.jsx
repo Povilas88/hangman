@@ -5,8 +5,7 @@ import { WordGenerator } from './components/wordGenerator/WordGenerator';
 import { Keyboard } from './components/Keyboard/Keyboard';
 
 function App() {
-  const randomWord = WordGenerator();
-  
+
   return (
     <>
     <div className='mainContainer'>
@@ -25,8 +24,8 @@ function App() {
           <span>6</span>
         </div>
       </div>
-      <img src={hangman} alt="" />
-      <p>{randomWord}</p>
+        <img src={hangman} alt="" />
+        <WordGenerator />
         <Keyboard />
     </div>
     </>
