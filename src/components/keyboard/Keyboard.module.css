@@ -1,0 +1,14 @@
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 550px;
+    gap: 5px;
+    background-color: aqua;
+}
+
+button {
+    width: 3rem;
+    height: 3rem;
+}

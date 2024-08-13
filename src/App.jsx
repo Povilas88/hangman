@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import hangman from './components/img/hangman.png';
 import { WordGenerator } from './components/wordGenerator/WordGenerator';
+import { Keyboard } from './components/Keyboard/Keyboard';
 
 function App() {
   const randomWord = WordGenerator();
@@ -26,7 +27,7 @@ function App() {
       </div>
       <img src={hangman} alt="" />
       <p>{randomWord}</p>
-      <div className='keyboardContainer'></div>
+        <Keyboard />
     </div>
     </>
   )
