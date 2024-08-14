@@ -1,11 +1,8 @@
-import { useState } from 'react';
+/* eslint-disable react/prop-types */
 import style from './Scoreboard.module.css'
 
-export const Scoreboard = () => {
-    const [wins, setWins] = useState(0);
-    const [losses, setLosses] = useState(0);
-    const [lives, setLives] = useState(6);
-
+export const Scoreboard = ({ wins, losses, lives }) => {
+   
     return (
         <div className={style.scoreContainer}>
             <div className={style.win}>
@@ -20,6 +17,7 @@ export const Scoreboard = () => {
                 <p>Lives: </p>
                 <span>{lives}</span>
             </div>
+            
         </div>
     );
 };

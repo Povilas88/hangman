@@ -1,12 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
-import { wordList } from './wordList';
-import style from './WordGenerator.module.css';
+import style from './DisplayWord.module.css';
 
-export function WordGenerator({guessedLetters }) {
-    const [word] = useState(() => {
-        return wordList[Math.floor(Math.random() * wordList.length)];
-    });
+export function DisplayWord({guessedLetters, word }) {
     const splitWord = word.toUpperCase().split('');
 
     return (
