@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import hangman from './components/img/hangman.png';
-import { wordList } from './components/displayWord/wordList';
+import { wordList } from './components/data/wordList';
 import { CheckLetter } from './components/checkLetter/CheckLetter';
 import { Scoreboard } from './components/scoreBoard/ScoreBoard';
 
