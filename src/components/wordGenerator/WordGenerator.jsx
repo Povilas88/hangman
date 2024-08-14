@@ -1,18 +1,21 @@
-import { useState } from "react";
-import { wordList } from "./wordList";
+/* eslint-disable react/prop-types */
+import { useState } from 'react';
+import { wordList } from './wordList';
 import style from './WordGenerator.module.css';
 
-export function WordGenerator(){
-    const [word] = useState(() =>{
-        return wordList[Math.floor(Math.random() * wordList.length)]
+export function WordGenerator({guessedLetters }) {
+    const [word] = useState(() => {
+        return wordList[Math.floor(Math.random() * wordList.length)];
     });
     const splitWord = word.toUpperCase().split('');
 
     return (
         <div className={style.wordDiv}>
             {splitWord.map((letter, index) => (
-                <span key={index}>{letter}</span>
-            ))}   
+                <span key={index}>
+                    {guessedLetters.includes(letter) ? letter : '_'}
+                </span>
+            ))}
         </div>
     ); 
 }

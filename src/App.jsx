@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import './App.css';
 import hangman from './components/img/hangman.png';
-import { WordGenerator } from './components/wordGenerator/WordGenerator';
-import { Keyboard } from './components/Keyboard/Keyboard';
+import { CheckLetter } from './components/checkLetter/CheckLetter';
 
 function App() {
 
@@ -25,8 +23,7 @@ function App() {
         </div>
       </div>
         <img src={hangman} alt="" />
-        <WordGenerator />
-        <Keyboard />
+        <CheckLetter />
     </div>
     </>
   )
