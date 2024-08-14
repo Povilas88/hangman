@@ -20,34 +20,8 @@ body {
     justify-content: center;
     flex-direction: column;
     gap: 10px;
-    background-color: pink;
 }
 
 img {
     width: 200px;
-}
-
-.scoreContainer {
-    display: flex;
-    gap: 1rem;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    background-color: antiquewhite;
-    padding: 10px;
-}
-
-.win {
-    display: flex;
-    gap: 0.8rem;
-}
-
-.lose {
-    display: flex;
-    gap: 0.8rem;
-}
-
-.lives {
-    display: flex;
-    gap: 0.8rem;
 }

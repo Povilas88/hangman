@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import style from './Keyboard.module.css';
 
-export function Keyboard({ guessedLetters, onGuess }) {
+export function Keyboard({ guessedLetters, onGuess, disabled }) {
     const keys = "QWERTYUIOPASDFGHJKLZXCVBNM".split('');
 
     const handleKeyPress = (event) => {
@@ -22,9 +22,11 @@ export function Keyboard({ guessedLetters, onGuess }) {
     return (
         <div className={style.buttonContainer}>
             {keys.map(key => (
-                <button key={key} className={style.button}
-                    onClick={() => onGuess(key)}>
-                    {key}
+                <button 
+                    key={key} 
+                    className="button" 
+                    onClick={() => onGuess(key)} 
+                    disabled={disabled}>{key}
                 </button>
             ))}
         </div>

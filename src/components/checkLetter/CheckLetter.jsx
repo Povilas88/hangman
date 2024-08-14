@@ -16,7 +16,7 @@ export function CheckLetter({word}) {
     return (
         <div>
             <WordGenerator word={word} guessedLetters={guessedLetters} />
-            <Keyboard guessedLetters={guessedLetters} onGuess={handleGuess} />
+            <Keyboard guessedLetters={guessedLetters} word={word} onGuess={handleGuess} />
         </div>
     );
 }
