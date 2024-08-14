@@ -17,7 +17,7 @@ export function Keyboard({ guessedLetters, onGuess, disabled }) {
         return () => {
             window.removeEventListener('keyup', handleKeyPress);
         };
-    }, [guessedLetters]);
+    }, [guessedLetters, disabled]);
 
     return (
         <div className={style.buttonContainer}>
