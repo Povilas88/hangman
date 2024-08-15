@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { DisplayWord } from '../displayWord/DisplayWord';
 import { Keyboard } from '../keyboard/Keyboard';
-import style from './CheckLetter.module.css';
 
 export function CheckLetter({ word, setWins, setLosses, lives, setLives }) {
     const [guessedLetters, setGuessedLetters] = useState([]);
@@ -19,7 +18,6 @@ export function CheckLetter({ word, setWins, setLosses, lives, setLives }) {
         } else if (!word.includes(letter) && !gameOver) {
             setLives(prev => prev - 1);
         }
-        console.log(pressedLetters);
     };
 
     useEffect(() => {

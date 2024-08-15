@@ -19,14 +19,22 @@ export function Keyboard({ guessedLetters, pressedLetters, onGuess, disabled }) 
         };
     }, [guessedLetters, disabled, pressedLetters]);
 
+    const getButtonClass = (key) => {
+    if (guessedLetters.includes(key)) {
+        return style.correct;
+    }
+    if (!guessedLetters.includes(key) && pressedLetters.includes(key)) {
+        return style.incorrect;
+    }
+    return '';
+    };
+
     return (
         <div className={style.buttonContainer}>
             {keys.map(key => (
                 <button 
                     key={key} 
-                    className={`${guessedLetters.includes(key) ? style.correct : ''}
-                    ${!guessedLetters.includes(key) 
-                        && pressedLetters.includes(key) ? style.incorrect : ''}`}
+                    className={getButtonClass(key)}
                     onClick={() => onGuess(key)} 
                     disabled={pressedLetters.includes(key) || disabled}>{key}
                 </button>

@@ -27,3 +27,8 @@ button:hover {
 .incorrect {
     background-color: red;
 }
+
+button:disabled,
+button[disabled] {
+    color: black;
+}
