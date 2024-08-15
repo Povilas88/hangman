@@ -1,0 +1,62 @@
+.container {
+    position: relative;
+    background-color: inherit;
+}
+
+img {
+    width: 200px;
+}
+
+.head {
+    width: 60px;
+    height: 60px;
+    background-color: inherit;
+    position: absolute;
+    bottom: 66%;
+    left: 64%;
+}
+
+.body {
+    width: 12px;
+    height: 70px;
+    background-color: inherit;
+    position: absolute;
+    bottom: 42%;
+    left: 76%;
+}
+
+.leftArm {
+    width: 32px;
+    height: 64px;
+    background-color: inherit;
+    position: absolute;
+    bottom: 42%;
+    left: 60%;
+}
+
+.rightArm {
+    width: 33px;
+    height: 64px;
+    background-color: inherit;
+    position: absolute;
+    bottom: 42%;
+    left: 82%;
+}
+
+.leftLeg {
+    width: 38px;
+    height: 81px;
+    background-color: inherit;
+    position: absolute;
+    bottom: 12%;
+    left: 60%;
+}
+
+.rightLeg {
+    width: 39px;
+    height: 81px;
+    background-color: inherit;
+    position: absolute;
+    bottom: 12%;
+    left: 79%;
+}

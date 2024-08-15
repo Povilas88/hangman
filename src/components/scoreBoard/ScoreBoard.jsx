@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import style from './Scoreboard.module.css'
+import style from './Scoreboard.module.css';
 
 export const Scoreboard = ({ wins, losses, lives }) => {
    
