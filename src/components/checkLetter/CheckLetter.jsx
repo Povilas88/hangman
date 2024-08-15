@@ -10,11 +10,12 @@ export function CheckLetter({ word, setWins, setLosses, lives, setLives }) {
     const [gameOver, setGameOver] = useState(false);
 
     const handleGuess = (letter) => {
-        if (!guessedLetters.includes(letter) && !gameOver) {
+        if (word.includes(letter) && !gameOver) {
             setGuessedLetters(prev => [...prev, letter]);
-            if (!word.includes(letter)) {
-                setLives(prev => prev - 1);
-            }
+            console.log('Correct guess:', letter);
+        } else if (!word.includes(letter) && !gameOver) {
+            setLives(prev => prev - 1);
+            console.log('Incorrect guess:', letter);
         }
     };
 
@@ -22,7 +23,7 @@ export function CheckLetter({ word, setWins, setLosses, lives, setLives }) {
         if (lives === 0) {
             setLosses(prev => prev + 1);
             setGameOver(true);
-        } else if (word.split('').every(letter => guessedLetters.includes(letter))) {
+        } else if (word.length === guessedLetters.length) {
             setWins(prev => prev + 1);
             setGameOver(true);
         }

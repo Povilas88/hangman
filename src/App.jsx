@@ -6,7 +6,7 @@ import { CheckLetter } from './components/checkLetter/CheckLetter';
 import { Scoreboard } from './components/scoreBoard/ScoreBoard';
 
 function App() {
-    const [word] = useState(() => wordList[Math.floor(Math.random() * wordList.length)]);
+    const [word] = useState(() => wordList[Math.floor(Math.random() * wordList.length)].toUpperCase());
     const [wins, setWins] = useState(0);
     const [losses, setLosses] = useState(0);
     const [lives, setLives] = useState(6);
