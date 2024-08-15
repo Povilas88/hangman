@@ -7,7 +7,7 @@ export function Keyboard({ guessedLetters, onGuess, disabled }) {
 
     const handleKeyPress = (event) => {
         const pressedKey = event.key.toUpperCase();
-        if (keys.includes(pressedKey) && !guessedLetters.includes(pressedKey)) {
+        if (keys.includes(pressedKey)) {
             onGuess(pressedKey);
         }
     };

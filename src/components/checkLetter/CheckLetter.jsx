@@ -12,10 +12,8 @@ export function CheckLetter({ word, setWins, setLosses, lives, setLives }) {
     const handleGuess = (letter) => {
         if (word.includes(letter) && !gameOver) {
             setGuessedLetters(prev => [...prev, letter]);
-            console.log('Correct guess:', letter);
         } else if (!word.includes(letter) && !gameOver) {
             setLives(prev => prev - 1);
-            console.log('Incorrect guess:', letter);
         }
     };
 
@@ -45,7 +43,9 @@ export function CheckLetter({ word, setWins, setLosses, lives, setLives }) {
             {gameOver && (
                 <div className='resetBtnContainer'>
                     <h2>{lives === 0 ? 'You lost' : 'You won!'}</h2>
-                    <button onClick={resetGame}>Play again</button>
+                    <button onClick={resetGame}>
+                        {lives === 0 ? 'New game' : 'Play again'}
+                    </button>
                 </div>
             )}
         </div>
