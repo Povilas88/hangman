@@ -7,14 +7,19 @@ import style from './CheckLetter.module.css';
 
 export function CheckLetter({ word, setWins, setLosses, lives, setLives }) {
     const [guessedLetters, setGuessedLetters] = useState([]);
+    const [pressedLetters, setPressedLetters] = useState([]);
     const [gameOver, setGameOver] = useState(false);
 
     const handleGuess = (letter) => {
+        if (!pressedLetters.includes(letter)){
+            setPressedLetters(prev => [...prev, letter]);
+        }
         if (word.includes(letter) && !gameOver) {
             setGuessedLetters(prev => [...prev, letter]);
         } else if (!word.includes(letter) && !gameOver) {
             setLives(prev => prev - 1);
         }
+        console.log(pressedLetters);
     };
 
     useEffect(() => {
@@ -38,8 +43,11 @@ export function CheckLetter({ word, setWins, setLosses, lives, setLives }) {
         <div>
             <DisplayWord word={word} guessedLetters={guessedLetters} />
             <Keyboard 
-            guessedLetters={guessedLetters} word={word} 
-            onGuess={handleGuess} disabled={gameOver} />
+            pressedLetters={pressedLetters} 
+            guessedLetters={guessedLetters} 
+            word={word} 
+            onGuess={handleGuess} 
+            disabled={gameOver} />
             {gameOver && (
                 <div className='resetBtnContainer'>
                     <h2>{lives === 0 ? 'You lost' : 'You won!'}</h2>

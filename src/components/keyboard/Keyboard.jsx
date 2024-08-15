@@ -2,12 +2,12 @@
 import { useEffect } from 'react';
 import style from './Keyboard.module.css';
 
-export function Keyboard({ guessedLetters, onGuess, disabled }) {
+export function Keyboard({ guessedLetters, pressedLetters, onGuess, disabled }) {
     const keys = "QWERTYUIOPASDFGHJKLZXCVBNM".split('');
 
     const handleKeyPress = (event) => {
         const pressedKey = event.key.toUpperCase();
-        if (keys.includes(pressedKey)) {
+        if (keys.includes(pressedKey)  && !disabled && !pressedLetters.includes(pressedKey)) {
             onGuess(pressedKey);
         }
     };
@@ -17,7 +17,7 @@ export function Keyboard({ guessedLetters, onGuess, disabled }) {
         return () => {
             window.removeEventListener('keyup', handleKeyPress);
         };
-    }, [guessedLetters, disabled]);
+    }, [guessedLetters, disabled, pressedLetters]);
 
     return (
         <div className={style.buttonContainer}>
@@ -26,7 +26,7 @@ export function Keyboard({ guessedLetters, onGuess, disabled }) {
                     key={key} 
                     className="button" 
                     onClick={() => onGuess(key)} 
-                    disabled={disabled}>{key}
+                    disabled={pressedLetters.includes(key) || disabled}>{key}
                 </button>
             ))}
         </div>
