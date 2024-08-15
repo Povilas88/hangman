@@ -16,7 +16,7 @@ button {
     font-size: 1.5rem;
 }
 
-button:hover {
+button:hover:not(:disabled) {
     background-color: orange;
 }
 
