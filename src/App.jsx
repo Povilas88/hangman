@@ -15,7 +15,7 @@ function App() {
         <div className='mainContainer'>
             <h1>Guess the word</h1>
             <Scoreboard wins={wins} losses={losses} lives={lives} />
-            <HangMan />
+            <HangMan lives={lives} />
             <CheckLetter 
                 word={word} 
                 setWins={setWins} 

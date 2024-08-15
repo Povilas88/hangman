@@ -18,7 +18,7 @@ img {
 
 .body {
     width: 12px;
-    height: 70px;
+    height: 69px;
     background-color: inherit;
     position: absolute;
     bottom: 42%;
@@ -26,7 +26,7 @@ img {
 }
 
 .leftArm {
-    width: 32px;
+    width: 33px;
     height: 64px;
     background-color: inherit;
     position: absolute;
@@ -35,12 +35,12 @@ img {
 }
 
 .rightArm {
-    width: 33px;
+    width: 34px;
     height: 64px;
     background-color: inherit;
     position: absolute;
     bottom: 42%;
-    left: 82%;
+    left: 81.5%;
 }
 
 .leftLeg {
