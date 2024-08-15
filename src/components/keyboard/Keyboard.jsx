@@ -24,7 +24,9 @@ export function Keyboard({ guessedLetters, pressedLetters, onGuess, disabled }) 
             {keys.map(key => (
                 <button 
                     key={key} 
-                    className="button" 
+                    className={`${guessedLetters.includes(key) ? style.correct : ''}
+                    ${!guessedLetters.includes(key) 
+                        && pressedLetters.includes(key) ? style.incorrect : ''}`}
                     onClick={() => onGuess(key)} 
                     disabled={pressedLetters.includes(key) || disabled}>{key}
                 </button>
