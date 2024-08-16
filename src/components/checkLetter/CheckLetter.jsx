@@ -17,15 +17,23 @@ export function CheckLetter({ word, setWins, setLosses, lives, setLives }) {
             setGuessedLetters(prev => [...prev, letter]);
         } else if (!word.includes(letter) && !gameOver) {
             setLives(prev => prev - 1);
-        }
+        } 
     };
 
     useEffect(() => {
-        if (lives === 0) {
-            setLosses(prev => prev + 1);
+         if (lives === 0) {
+            setLosses(prev => {
+                const localLosses = prev + 1;
+                localStorage.setItem('losses', localLosses);
+                return localLosses;
+            });
             setGameOver(true);
-        } else if (word.length === guessedLetters.length) {
-            setWins(prev => prev + 1);
+        } else if (word.split('').every(letter => guessedLetters.includes(letter))) {
+            setWins(prev => {
+                const localWins = prev + 1;
+                localStorage.setItem('wins', localWins);
+                return localWins;
+            });
             setGameOver(true);
         }
     }, [guessedLetters, lives, word, setWins, setLosses]);
