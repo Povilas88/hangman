@@ -4,32 +4,42 @@ import { useEffect } from 'react';
 import { DisplayWord } from '../displayWord/DisplayWord';
 import { Keyboard } from '../keyboard/Keyboard';
 
-export function CheckLetter({ word, setWins, setLosses, lives, setLives }) {
+export function CheckLetter({
+    word,
+    setWins,
+    setLosses,
+    lives,
+    setLives,
+    handleNewWord,
+    setIndex,
+}) {
     const [guessedLetters, setGuessedLetters] = useState([]);
     const [pressedLetters, setPressedLetters] = useState([]);
     const [gameOver, setGameOver] = useState(false);
 
     const handleGuess = (letter) => {
-        if (!pressedLetters.includes(letter)){
-            setPressedLetters(prev => [...prev, letter]);
+        if (!pressedLetters.includes(letter)) {
+            setPressedLetters((prev) => [...prev, letter]);
         }
         if (word.includes(letter) && !gameOver) {
-            setGuessedLetters(prev => [...prev, letter]);
+            setGuessedLetters((prev) => [...prev, letter]);
         } else if (!word.includes(letter) && !gameOver) {
-            setLives(prev => prev - 1);
-        } 
+            setLives((prev) => prev - 1);
+        }
     };
 
     useEffect(() => {
-         if (lives === 0) {
-            setLosses(prev => {
+        if (lives === 0) {
+            setLosses((prev) => {
                 const localLosses = prev + 1;
                 localStorage.setItem('losses', localLosses);
                 return localLosses;
             });
             setGameOver(true);
-        } else if (word.split('').every(letter => guessedLetters.includes(letter))) {
-            setWins(prev => {
+        } else if (
+            word.split('').every((letter) => guessedLetters.includes(letter))
+        ) {
+            setWins((prev) => {
                 const localWins = prev + 1;
                 localStorage.setItem('wins', localWins);
                 return localWins;
@@ -43,21 +53,29 @@ export function CheckLetter({ word, setWins, setLosses, lives, setLives }) {
         setPressedLetters([]);
         setLives(6);
         setGameOver(false);
-        window.location.reload()
+        handleNewWord();
+        setIndex(0);
     };
 
     return (
-        <div className='bottomContainer'>
+        <div className="bottomContainer">
             <DisplayWord word={word} guessedLetters={guessedLetters} />
-            <Keyboard 
-            pressedLetters={pressedLetters} 
-            guessedLetters={guessedLetters}
-            setLosses={setLosses} 
-            setWins={setWins} 
-            onGuess={handleGuess} 
-            disabled={gameOver} />
+            <Keyboard
+                setGuessedLetters={setGuessedLetters}
+                setPressedLetters={setPressedLetters}
+                setLives={setLives}
+                setGameOver={setGameOver}
+                handleNewWord={handleNewWord}
+                pressedLetters={pressedLetters}
+                guessedLetters={guessedLetters}
+                setLosses={setLosses}
+                setWins={setWins}
+                setIndex={setIndex}
+                onGuess={handleGuess}
+                disabled={gameOver}
+            />
             {gameOver && (
-                <div className='resetBtnContainer'>
+                <div className="resetBtnContainer">
                     <h2>{lives === 0 ? 'You lost' : 'You won!'}</h2>
                     <button onClick={resetGame}>
                         {lives === 0 ? 'New game' : 'Play again'}

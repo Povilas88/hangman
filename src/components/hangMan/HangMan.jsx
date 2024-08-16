@@ -1,17 +1,15 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import style from './HangMan.module.css';
 import hangman from './hangman.png';
 
-export function HangMan({lives}){
-    const [index, setIndex] = useState(0);
-
+export function HangMan({ lives, index, setIndex }) {
     useEffect(() => {
         if (lives < 6) {
-            setIndex(prev => prev + 1);
+            setIndex((prev) => prev + 1);
         }
     }, [lives]);
-    
+
     const renderBodyParts = () => {
         const bodyParts = [
             <div className={style.head} key="head"></div>,
@@ -19,9 +17,9 @@ export function HangMan({lives}){
             <div className={style.leftArm} key="leftArm"></div>,
             <div className={style.rightArm} key="rightArm"></div>,
             <div className={style.leftLeg} key="leftLeg"></div>,
-            <div className={style.rightLeg} key="rightLeg"></div>
+            <div className={style.rightLeg} key="rightLeg"></div>,
         ];
-        return bodyParts.slice(index, 6);  
+        return bodyParts.slice(index, 6);
     };
 
     return (
