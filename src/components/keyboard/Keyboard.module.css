@@ -21,7 +21,7 @@ button {
     color: #fd512a;
 }
 
-.resetButton:hover {
+.resetButton:hover:not(:disabled) {
     color: white;
     background-color: #fd512a !important;
 }

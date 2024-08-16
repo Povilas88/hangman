@@ -70,7 +70,11 @@ export function Keyboard({
                     {key}
                 </button>
             ))}
-            <button className={style.resetButton} onClick={onReset}>
+            <button
+                className={style.resetButton}
+                onClick={onReset}
+                disabled={disabled}
+            >
                 Reset
             </button>
         </div>
