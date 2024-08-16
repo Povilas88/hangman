@@ -11,7 +11,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
 }
 
 .mainContainer {
@@ -19,8 +19,14 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     background-color: white;
+    height: 100vh;
+    width: 100vw;
+}
+
+.bottomContainer {
+    position: relative;
 }
 
 .resetBtnContainer {
@@ -28,11 +34,12 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 30px;
+    width: 180px;
+    height: 120px;
     background-color: rgb(90, 199, 250);
     gap: 10px;
     position: absolute;
-    bottom: 10%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -41,4 +48,16 @@ body {
     text-align: center;
     width: 130px;
     height: 40px;
+}
+
+@media (max-width: 768px) {
+    .mainContainer {
+        scale: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .mainContainer {
+        scale: 70%;
+    }
 }

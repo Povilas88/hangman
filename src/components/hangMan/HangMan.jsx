@@ -9,7 +9,6 @@ export function HangMan({lives}){
     useEffect(() => {
         if (lives < 6) {
             setIndex(prev => prev + 1);
-            console.log(lives);
         }
     }, [lives]);
     

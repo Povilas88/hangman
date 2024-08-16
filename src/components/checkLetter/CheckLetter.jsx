@@ -38,7 +38,7 @@ export function CheckLetter({ word, setWins, setLosses, lives, setLives }) {
     };
 
     return (
-        <div>
+        <div className='bottomContainer'>
             <DisplayWord word={word} guessedLetters={guessedLetters} />
             <Keyboard 
             pressedLetters={pressedLetters} 
