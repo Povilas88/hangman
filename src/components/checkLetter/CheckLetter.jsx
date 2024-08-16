@@ -40,6 +40,7 @@ export function CheckLetter({ word, setWins, setLosses, lives, setLives }) {
 
     const resetGame = () => {
         setGuessedLetters([]);
+        setPressedLetters([]);
         setLives(6);
         setGameOver(false);
         window.location.reload()
@@ -50,8 +51,9 @@ export function CheckLetter({ word, setWins, setLosses, lives, setLives }) {
             <DisplayWord word={word} guessedLetters={guessedLetters} />
             <Keyboard 
             pressedLetters={pressedLetters} 
-            guessedLetters={guessedLetters} 
-            word={word} 
+            guessedLetters={guessedLetters}
+            setLosses={setLosses} 
+            setWins={setWins} 
             onGuess={handleGuess} 
             disabled={gameOver} />
             {gameOver && (

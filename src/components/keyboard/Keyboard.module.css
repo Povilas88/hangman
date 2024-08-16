@@ -16,6 +16,16 @@ button {
     font-size: 1.5rem;
 }
 
+.resetButton {
+    width: 6rem;
+    color: #fd512a;
+}
+
+.resetButton:hover {
+    color: white;
+    background-color: #fd512a !important;
+}
+
 button:hover:not(:disabled) {
     background-color: orange;
 }

@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import style from './Keyboard.module.css';
 
-export function Keyboard({ guessedLetters, pressedLetters, onGuess, disabled }) {
+export function Keyboard({ guessedLetters, pressedLetters, onGuess, disabled, setLosses, setWins}) {
     const keys = "QWERTYUIOPASDFGHJKLZXCVBNM".split('');
 
     const handleKeyPress = (event) => {
@@ -29,6 +29,12 @@ export function Keyboard({ guessedLetters, pressedLetters, onGuess, disabled }) 
     return '';
     };
 
+    const onReset = () => {
+    localStorage.clear();
+     setLosses(0)
+     setWins(0)
+    };
+
     return (
         <div className={style.buttonContainer}>
             {keys.map(key => (
@@ -39,6 +45,10 @@ export function Keyboard({ guessedLetters, pressedLetters, onGuess, disabled }) 
                     disabled={pressedLetters.includes(key) || disabled}>{key}
                 </button>
             ))}
+             <button 
+            className={style.resetButton} 
+            onClick={onReset}>Reset
+            </button>
         </div>
     );
 }
