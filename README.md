@@ -13,7 +13,9 @@ Site published at: https://github.com/Povilas88/hangman
 ## 🎯 Project features/goals
 
 -   Github pages
--   React
+-   React js
+-   localStorage
+-   Responsive design
 
 ## 🧰 Getting Started
 
