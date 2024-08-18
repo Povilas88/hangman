@@ -2,8 +2,18 @@ import { useState } from 'react';
 import { wordList } from './wordList';
 
 export const WordGenerator = () => {
+    const filteredWordList = wordList.filter(
+        (item) => typeof item === 'string' && item.match(/^[a-zA-Z]+$/)
+    );
+
     const generateRandomWord = () => {
-        const word = wordList[Math.floor(Math.random() * wordList.length)]
+        if (filteredWordList.length === 0) {
+            alert('Error: No valid words in the word list.');
+            return;
+        }
+        const word = filteredWordList[
+            Math.floor(Math.random() * filteredWordList.length)
+        ]
             .trim()
             .toUpperCase();
 
