@@ -3,9 +3,11 @@ import { wordList } from './wordList';
 
 export const WordGenerator = () => {
     const generateRandomWord = () => {
-        return wordList[
-            Math.floor(Math.random() * wordList.length)
-        ].toUpperCase();
+        const word = wordList[Math.floor(Math.random() * wordList.length)]
+            .trim()
+            .toUpperCase();
+
+        return word.length < 1 || word.length > 8 ? generateRandomWord() : word;
     };
 
     const [word, setWord] = useState(() => generateRandomWord());
