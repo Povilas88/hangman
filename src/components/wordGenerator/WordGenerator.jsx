@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { wordList } from './wordList';
 
 export const WordGenerator = () => {
@@ -20,11 +20,19 @@ export const WordGenerator = () => {
         return word.length < 1 || word.length > 8 ? generateRandomWord() : word;
     };
 
-    const [word, setWord] = useState(() => generateRandomWord());
+    const [word, setWord] = useState(() => {
+        const savedWord = localStorage.getItem('word');
+        return savedWord ? savedWord : generateRandomWord();
+    });
 
     const handleNewWord = () => {
         setWord(generateRandomWord());
+        localStorage.setItem('word', word);
     };
+
+    useEffect(() => {
+        localStorage.setItem('word', word);
+    }, [word]);
 
     return { word, handleNewWord };
 };

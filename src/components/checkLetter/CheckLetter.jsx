@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { DisplayWord } from '../displayWord/DisplayWord';
 import { Keyboard } from '../keyboard/Keyboard';
 
@@ -13,22 +12,58 @@ export function CheckLetter({
     handleNewWord,
     setIndex,
 }) {
-    const [guessedLetters, setGuessedLetters] = useState([]);
-    const [pressedLetters, setPressedLetters] = useState([]);
-    const [gameOver, setGameOver] = useState(false);
+    const [guessedLetters, setGuessedLetters] = useState(
+        JSON.parse(localStorage.getItem('guessedLetters')) || []
+    );
+    const [pressedLetters, setPressedLetters] = useState(
+        JSON.parse(localStorage.getItem('pressedLetters')) || []
+    );
+    const [gameOver, setGameOver] = useState(
+        JSON.parse(localStorage.getItem('gameOver')) || false
+    );
 
     const handleGuess = (letter) => {
-        if (!pressedLetters.includes(letter)) {
-            setPressedLetters((prev) => [...prev, letter]);
+        if (gameOver) {
+            return;
         }
-        if (word.includes(letter) && !gameOver) {
-            setGuessedLetters((prev) => [...prev, letter]);
-        } else if (!word.includes(letter) && !gameOver) {
-            setLives((prev) => prev - 1);
+        if (!pressedLetters.includes(letter)) {
+            setPressedLetters((prev) => {
+                const updatedPressedLetters = [...prev, letter];
+                localStorage.setItem(
+                    'pressedLetters',
+                    JSON.stringify(updatedPressedLetters)
+                );
+                return updatedPressedLetters;
+            });
+        }
+        if (word.includes(letter)) {
+            setGuessedLetters((prev) => {
+                const updatedGuessedLetters = [...prev, letter];
+                localStorage.setItem(
+                    'guessedLetters',
+                    JSON.stringify(updatedGuessedLetters)
+                );
+                return updatedGuessedLetters;
+            });
+        } else if (!word.includes(letter)) {
+            setLives((prev) => {
+                const localLives = prev - 1;
+                localStorage.setItem('lives', localLives);
+                return localLives;
+            });
         }
     };
 
     useEffect(() => {
+        if (gameOver) {
+            localStorage.setItem('gameOver', gameOver);
+        }
+    }, [gameOver]);
+
+    useEffect(() => {
+        if (gameOver) {
+            return;
+        }
         if (lives === 0) {
             setLosses((prev) => {
                 const localLosses = prev + 1;
@@ -46,7 +81,7 @@ export function CheckLetter({
             });
             setGameOver(true);
         }
-    }, [guessedLetters, lives, word, setWins, setLosses]);
+    }, [guessedLetters, lives, word, setWins, setLosses, gameOver]);
 
     const resetGame = () => {
         setGuessedLetters([]);
@@ -55,6 +90,11 @@ export function CheckLetter({
         setGameOver(false);
         handleNewWord();
         setIndex(0);
+        localStorage.setItem('hangmanIndex', 0);
+        localStorage.setItem('gameOver', false);
+        localStorage.setItem('pressedLetters', '[]');
+        localStorage.setItem('guessedLetters', '[]');
+        localStorage.setItem('lives', 6);
     };
 
     return (

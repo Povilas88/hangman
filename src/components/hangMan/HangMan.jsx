@@ -1,13 +1,20 @@
 /* eslint-disable react/prop-types */
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import style from './HangMan.module.css';
 import hangman from './hangman.png';
 
 export function HangMan({ lives, index, setIndex }) {
+    const prevLives = useRef(lives);
+
     useEffect(() => {
-        if (lives < 6) {
-            setIndex((prev) => prev + 1);
+        if (lives > 0 && lives < 6 && prevLives.current > lives) {
+            setIndex((prev) => {
+                const newIndex = prev + 1;
+                localStorage.setItem('hangmanIndex', newIndex);
+                return newIndex;
+            });
         }
+        prevLives.current = lives;
     }, [lives]);
 
     const renderBodyParts = () => {
