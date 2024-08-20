@@ -41,7 +41,9 @@ Would like to run this project locally? Open terminal and follow these steps:
     ```sh
     git clone https://github.com/Povilas88/hangman.git
     ```
-2. Install NPM packages
+2. Navigate to and open hangman folder
+
+3. Install NPM packages
     ```sh
     npm i
     ```
@@ -49,10 +51,11 @@ Would like to run this project locally? Open terminal and follow these steps:
     ```sh
     npm install
     ```
-3. Run the server
+4. Run the server
     ```sh
     npm run dev
     ```
+5. Open using link inside terminal
 
 ## 🎅 Authors
 
