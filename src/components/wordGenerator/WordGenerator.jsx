@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { wordList } from './wordList';
 
+const encode = (word) => btoa(word); // Base64 encoding
+const decode = (encodedWord) => atob(encodedWord); // Base64 decoding
+
 export const WordGenerator = () => {
     const filteredWordList = wordList.filter(
         (item) => typeof item === 'string' && item.match(/^[a-zA-Z]+$/)
@@ -22,16 +25,17 @@ export const WordGenerator = () => {
 
     const [word, setWord] = useState(() => {
         const savedWord = localStorage.getItem('word');
-        return savedWord ? savedWord : generateRandomWord();
+        return savedWord ? decode(savedWord) : generateRandomWord();
     });
 
     const handleNewWord = () => {
-        setWord(generateRandomWord());
-        localStorage.setItem('word', word);
+        const newWord = generateRandomWord();
+        setWord(newWord);
+        localStorage.setItem('word', encode(newWord));
     };
 
     useEffect(() => {
-        localStorage.setItem('word', word);
+        localStorage.setItem('word', encode(word));
     }, [word]);
 
     return { word, handleNewWord };
